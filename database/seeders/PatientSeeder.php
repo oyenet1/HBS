@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Patient;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class PatientSeeder extends Seeder
 {
@@ -14,6 +15,6 @@ class PatientSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Patient::factory(200)->create();
     }
 }

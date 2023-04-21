@@ -17,12 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             LaratrustSeeder::class,
                 // RoleSeeder::class,
-            UserSeeder::class,
-            LevelSeeder::class,
-            DepartmentSeeder::class,
-            SemesterSeeder::class,
-            CourseSeeder::class,
-            CourseAllocationSeeder::class,
+            PatientSeeder::class,
         ]);
     }
 }
