@@ -11,6 +11,7 @@ class Index extends Component
 {
     use WithFileUploads, WithPagination;
     public ?array $titles = ["Mr.", "Mrs.", "Ms.", "Prof.", "Dr."];
+    public ?array $type = ["in-patient", "out-patient"];
 
     public $name, $email, $phone, $address, $state, $nationality, $cid, $image, $title, $gender, $department, $occupation, $dob, $status, $lga, $blood_group;
     protected $listeners = [
@@ -26,6 +27,8 @@ class Index extends Component
     {
         $this->title = null;
         $this->email = null;
+        $this->name = null;
+        $this->phone = null;
         $this->address = null;
         $this->state = null;
         $this->nationality = null;
@@ -65,7 +68,8 @@ class Index extends Component
             'phone' => 'required|numeric|digits:10|unique:patients',
             'email' => 'required|email|unique:patients',
             'address' => 'required',
-        ]);
+            'status' => 'required',
+        ], ['status.required' => 'kindly select patient type']);
         $saved = Patient::create($data);
 
         if ($saved) {

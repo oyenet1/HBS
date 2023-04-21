@@ -80,8 +80,7 @@
             <div class="navbar-item dropdown has-divider has-user-avatar">
               <a class="navbar-link">
                 <div class="user-avatar">
-                  <img src="https://avatars.dicebear.com/v2/initials/john-doe.svg" alt="{{ currentUser()->name }}"
-                    class="rounded-full" />
+                  <img src="{{ asset('img/logo.png') }}" alt="{{ currentUser()->name }}" class="rounded-full" />
                 </div>
                 <div class="is-user-name"><span>{{ currentUser()->name }}</span></div>
                 <span class="icon"><i class="mdi mdi-chevron-down"></i></span>

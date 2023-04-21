@@ -3,29 +3,38 @@
     {{-- modal forms and inputs components --}}
     <x-modal class="max-w-lg">
         <x-form title="patient" :update="$update">
-            <x-text-input label="Patient Title*" name="title" type="text" wire:model.defer="title" />
-
-            {{-- <div class="flex items-center justify-between w-full">
-                <x-text-input label="patient code*" name="code" type="text" wire:model.defer="code" class="w-[96%]" />
-                <x-text-input label="patient Unit*" name="unit" type="text" wire:model.defer="unit" class="w-[96%]" />
-            </div> --}}
-            <div class="w-full h-12 space-y-1">
-                <select wire:model.defer="title"
-                    class='w-full h-full pl-4 space-y-1 font-medium text-gray-500 placeholder-gray-500 capitalize bg-gray-100 border-0 rounded peer tt focus:border-2 focus:border-primary focus:bg-white focus:outline-none'
-                    id="">
-                    <option value="select" class="text-sm">Title*</option>
-                    @foreach ($titles as $option)
-                    <option class="py-2 capitalize" value="{{ $option }}">{{ $option }}</option>
-                    @endforeach
-                </select>
-                @error('title')
-                <span class="text-red-600">{{ $message }}</span>
-                @enderror
+            <div class="grid grid-cols-2 mb-2 gap-4">
+                <div class="w-full h-12 space-y-1">
+                    <select wire:model.defer="title"
+                        class='w-full h-full pl-4 space-y-1 font-medium text-gray-500 placeholder-gray-500 capitalize bg-gray-100 border-0 rounded peer tt focus:bg-white focus:outline-none'
+                        id="">
+                        <option value="select" class="text-sm">Title*</option>
+                        @foreach ($titles as $option)
+                        <option class="py-2 capitalize" value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
+                    </select>
+                    @error('title')
+                    <span class="text-red-600 text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="w-full h-12 space-y-1">
+                    <select wire:model.defer="status"
+                        class='w-full h-full pl-4 space-y-1 capitalize font-medium text-gray-500 placeholder-gray-500 bg-gray-100 border-0 rounded peer tt focus:bg-white focus:outline-none'
+                        id="">
+                        <option value="select" class="text-sm">Patient Type</option>
+                        @foreach ($type as $option)
+                        <option class="py-2 uppercase" value="{{ $option }}">{{ $option }}</option>
+                        @endforeach
+                    </select>
+                    @error('status')
+                    <span class="text-red-600 text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
             </div>
             <x-text-input label="Patient Name*" name="name" type="text" wire:model.defer="name" />
-            <x-text-input label="Patient Name*" name="email" type="text" wire:model.defer="email" />
-            <x-text-input label="Patient Name*" name="phone" type="text" wire:model.defer="phone" />
-            <x-text-input label="Patient Name*" name="address" type="text" wire:model.defer="address" />
+            <x-text-input label="Email*" name="email" type="text" wire:model.defer="email" />
+            <x-text-input label="Phone Number*" name="phone" type="text" wire:model.defer="phone" />
+            <x-text-input label="Address*" name="address" type="text" wire:model.defer="address" />
         </x-form>
     </x-modal>
     {{-- buttons --}}
