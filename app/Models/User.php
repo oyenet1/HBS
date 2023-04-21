@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Traits\HasManyAllocation;
+use App\Traits\HasManyConsultation;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,7 +12,7 @@ use Laratrust\Traits\LaratrustUserTrait;
 class User extends Authenticatable
 {
     use LaratrustUserTrait;
-    use HasFactory, Notifiable, HasManyAllocation;
+    use HasFactory, Notifiable, HasManyConsultation;
 
     /**
      * The attributes that are mass assignable.

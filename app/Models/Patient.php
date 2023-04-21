@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\HasManyConsultation;
 use Illuminate\Database\Eloquent\Model;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Patient extends Model
 {
-    use HasFactory;
+    use HasFactory, HasManyConsultation;
     protected $guarded = [];
     protected $casts = [
         'created_at' => 'datetime',
