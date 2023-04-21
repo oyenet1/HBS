@@ -29,7 +29,7 @@
           <div class="pt-4">
             <p class="text-center py-2 text-lg">Hospital Billing System</p>
             <img aria-hidden="true" class="object-cover w-24 p-1 shadow rounded-full bg-gray-50 mx-auto"
-              src="/img/logo.png" alt="Office" />
+              src="/img/logo.png" alt="{{ config('app.name') }}" />
           </div>
           <div class="flex items-center justify-center px-6 pt-0 pb-6 sm:p-12 sm:pt-0">
             <div class="w-full">
@@ -70,7 +70,7 @@
               </form>
 
               <hr class="my-8" />
-              <p class="text-center p-2 shadow-sm rounded border">Designed and Developed by <a
+              <p class="text-center text-sm p-2 shadow-sm rounded border">Designed and Developed by <a
                   href="https://bowofade.com" class="text-secondary">Networker</a></p>
             </div>
           </div>

@@ -17,7 +17,7 @@ return [
             'payments' => 'c,r,u,d',
             'profile' => 'r,u'
         ],
-        'lecturer' => [
+        'doctor' => [
             'users' => 'c,r,u,d',
             'profile' => 'r,u'
         ],

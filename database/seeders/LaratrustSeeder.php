@@ -68,7 +68,7 @@ class LaratrustSeeder extends Seeder
                     'title' => fake()->title(),
                     'first_name' => fake()->firstName(),
                     'last_name' => fake()->lastName(),
-                    'email' => $key . '@cselot.com',
+                    'email' => $key . '@hbs.com',
                     'password' => bcrypt('password'),
                     'username' => strtolower($key),
                 ]);
