@@ -13,17 +13,17 @@
     <meta name="theme-color" content="#ffffff">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title' ?? config('app.name'))</title>
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+    <title><?php echo $__env->yieldContent('title' ?? config('app.name')); ?></title>
 
-    {{-- css  --}}
+    
 
-    {{-- css  --}}
+    
 
-    <link href="{{ mix('css/main.css') }}" rel="stylesheet">
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    {{-- <script defer src="https://unpkg.com/alpinejs@3.4.2/dist/cdn.min.js"></script> --}}
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    <link href="<?php echo e(mix('css/main.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(mix('css/app.css')); ?>" rel="stylesheet">
+    
+    <script src="<?php echo e(mix('js/app.js')); ?>" defer></script>
 
     <meta name="description" content="Adonis Abbey" />
 
@@ -54,7 +54,8 @@
         background: #009933;
       } */
     </style>
-    @livewireStyles
+    <?php echo \Livewire\Livewire::styles(); ?>
+
   </head>
 
   <body>
@@ -66,7 +67,7 @@
           </a>
           <div class="navbar-item">
             <div class="control">
-              <p class="text-center text-xl">{{ config('app.name') }}</p>
+              <p class="text-center text-xl"><?php echo e(config('app.name')); ?></p>
             </div>
           </div>
         </div>
@@ -80,14 +81,14 @@
             <div class="navbar-item dropdown has-divider has-user-avatar">
               <a class="navbar-link">
                 <div class="user-avatar">
-                  <img src="https://avatars.dicebear.com/v2/initials/john-doe.svg" alt="{{ currentUser()->name }}"
+                  <img src="https://avatars.dicebear.com/v2/initials/john-doe.svg" alt="<?php echo e(currentUser()->name); ?>"
                     class="rounded-full" />
                 </div>
-                <div class="is-user-name"><span>{{ currentUser()->name }}</span></div>
+                <div class="is-user-name"><span><?php echo e(currentUser()->name); ?></span></div>
                 <span class="icon"><i class="mdi mdi-chevron-down"></i></span>
               </a>
               <div class="navbar-dropdown">
-                <a href="{{ route('profile') }}" class="navbar-item">
+                <a href="<?php echo e(route('profile')); ?>" class="navbar-item">
                   <span class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -108,17 +109,17 @@
                 </a>
                 <hr class="navbar-divider" />
                 <a onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                  class="navbar-item" href="{{ route('logout') }}">
+                  class="navbar-item" href="<?php echo e(route('logout')); ?>">
                   <span class="icon"><i class="mdi mdi-logout"></i></span>
                   <span>Log Out</span>
                 </a>
               </div>
-              <form class="logout-form hidden" id="logout-form" action="{{ route('logout') }}" method="POST">
-                @csrf
+              <form class="logout-form hidden" id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST">
+                <?php echo csrf_field(); ?>
               </form>
             </div>
             <a onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title="Log out"
-              class="navbar-item desktop-icon-only hover:text-secondary" href="{{ route('logout') }}">
+              class="navbar-item desktop-icon-only hover:text-secondary" href="<?php echo e(route('logout')); ?>">
               <span class="icon"><i class="mdi mdi-logout"></i></span>
               <span>Log out</span>
             </a>
@@ -133,10 +134,10 @@
           </div>
         </div>
         <div class="menu is-menu-main space-y-1 overflow-y-auto">
-          <p class="px-4 py-2 capitalize">{{ greeting() . ', ' }} <span
-              class="font-medium">{{ currentUser()->roles[0]->name }}</span></p>
+          <p class="px-4 py-2 capitalize"><?php echo e(greeting() . ', '); ?> <span
+              class="font-medium"><?php echo e(currentUser()->roles[0]->name); ?></span></p>
           <ul class="menu-list space-y-1">
-            <li class="{{ request()->is('*/home') ? 'active' : '' }}">
+            <li class="<?php echo e(request()->is('*/home') ? 'active' : ''); ?>">
               <a href="/">
                 <span class="icon">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -150,8 +151,8 @@
                 <span class="menu-item-label">Dashboard</span>
               </a>
             </li>
-            <li class="--set-active-profile-html {{ request()->is('profile') ? 'active' : '' }}">
-              <a href="{{ route('profile') }}">
+            <li class="--set-active-profile-html <?php echo e(request()->is('profile') ? 'active' : ''); ?>">
+              <a href="<?php echo e(route('profile')); ?>">
                 <span class="icon">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                     class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -166,9 +167,9 @@
           </ul>
           <p class="menu-label">Consultation</p>
           <ul class="menu-list space-y-1">
-            @if(auth()->user()->hasRole('administrator'))
+            <?php if(auth()->user()->hasRole('administrator')): ?>
             <li>
-              <a class="dropdown {{ request()->is('admin/courses*') ? 'active' : '' }}">
+              <a class="dropdown <?php echo e(request()->is('admin/courses*') ? 'active' : ''); ?>">
                 <span class="icon">
                   <svg style="width:20px;height:20px" viewBox="0 0 24 24">
                     <path fill="currentColor"
@@ -179,14 +180,14 @@
                 <span class="icon"><i class="mdi mdi-plus"></i></span>
               </a>
               <ul class="bg-white">
-                <li class="{{ request()->is('admin/courses') ? 'active' : 'bg-white' }}">
+                <li class="<?php echo e(request()->is('admin/courses') ? 'active' : 'bg-white'); ?>">
                   <a href="" class="">
                     <span class="md:pl-8">Patients</span>
                   </a>
                 </li>
               </ul>
             </li>
-            @else
+            <?php else: ?>
             <li class="--set-active-profile-html">
               <a href="">
                 <span class="icon">
@@ -198,14 +199,15 @@
                 <span class="menu-item-label">My Lessons</span>
               </a>
             </li>
-            @endif
+            <?php endif; ?>
           </ul>
 
         </div>
       </aside>
 
       <main>
-        {{ $slot ?? '' }}
+        <?php echo e($slot ?? ''); ?>
+
       </main>
 
       <footer class="footer w-full bg-primary-dark text-white">
@@ -219,7 +221,7 @@
 
 
           <div class="flex items-center justify-start space-x-3 uppercase">
-            <div>© All right reserved 2023 {{ config('app.name') }}</div>
+            <div>© All right reserved 2023 <?php echo e(config('app.name')); ?></div>
           </div>
         </div>
       </footer>
@@ -231,8 +233,9 @@
 
     <!-- Scripts below are for demo only -->
     <script type="text/javascript" src="/js/main.min.js"></script>
-    {{-- <script type="text/javascript" src="/js/main.js"></script> --}}
-    @livewireScripts
+    
+    <?php echo \Livewire\Livewire::scripts(); ?>
+
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
@@ -268,14 +271,14 @@
 
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script> --}}
+    
     <script type="text/javascript" src="/js/chart.sample.min.js"></script>
 
     <!-- Icons below are for demo only. Feel free to use any icon pack. Docs: https://bulma.io/documentation/elements/icon/ -->
 
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css" />
-    @stack('scripts')
-    {{-- @yield('scripts') --}}
+    <?php echo $__env->yieldPushContent('scripts'); ?>
+    
   </body>
 
-</html>
+</html><?php /**PATH /Users/user/Documents/projects/hbs/resources/views/layouts/app.blade.php ENDPATH**/ ?>

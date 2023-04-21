@@ -922,13 +922,13 @@ body {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   --tw-text-opacity: 1;
-  color: #009933;
+  color: #0033cc;
   font-weight: 500;
 }
 
 .menu-list li > a:hover {
   --tw-bg-opacity: 1;
-  background-color: #009933;
+  background-color: #0033cc;
   color: white;
 }
 

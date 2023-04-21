@@ -1,14 +1,35 @@
 <div class="grid w-full gap-8 p-8 mx-auto xl:p-8 2xl:p-10 xl:gap-8 2xl:gap-10">
 
   <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 xl:gap-8 2xl:gap-10">
-    <x-board color="blue-500" name="lecturers" digit="{{ \App\Models\User::count() - 1 }}">
+    <?php if (isset($component)) { $__componentOriginal15802cba71b9a49a312c120e81efb512b75cd6c8 = $component; } ?>
+<?php $component = App\View\Components\Board::resolve(['color' => 'blue-500','name' => 'lecturers','digit' => ''.e(\App\Models\User::count() - 1).''] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('board'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\Board::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 2xl:w-8 2xl:h-8" fill="currentColor" class="bi bi-people"
         viewBox="0 0 16 16">
         <path
           d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z" />
       </svg>
-    </x-board>
-    <x-board color="red-500" name="patients" digit="{{ \App\Models\Patient::count() }}">
+     <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal15802cba71b9a49a312c120e81efb512b75cd6c8)): ?>
+<?php $component = $__componentOriginal15802cba71b9a49a312c120e81efb512b75cd6c8; ?>
+<?php unset($__componentOriginal15802cba71b9a49a312c120e81efb512b75cd6c8); ?>
+<?php endif; ?>
+    <?php if (isset($component)) { $__componentOriginal15802cba71b9a49a312c120e81efb512b75cd6c8 = $component; } ?>
+<?php $component = App\View\Components\Board::resolve(['color' => 'red-500','name' => 'patients','digit' => ''.e(\App\Models\Patient::count()).''] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('board'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\Board::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
 
       <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6 bi bi-journal-richtext 2xl:w-8 2xl:h-8"
         viewBox="0 0 16 16">
@@ -19,7 +40,12 @@
         <path
           d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
       </svg>
-    </x-board>
+     <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal15802cba71b9a49a312c120e81efb512b75cd6c8)): ?>
+<?php $component = $__componentOriginal15802cba71b9a49a312c120e81efb512b75cd6c8; ?>
+<?php unset($__componentOriginal15802cba71b9a49a312c120e81efb512b75cd6c8); ?>
+<?php endif; ?>
   </div>
   <div class="grid gap-8 lg:grid-cols-2 xl:gap-8 2xl:gap-10">
     <div class="p-8 bg-white rounded shadow-sm">
@@ -36,7 +62,7 @@
   </div>
 </div>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script>
   var xValues = ["January"
     , "February"
@@ -66,7 +92,7 @@
     , options: {
       title: {
         display: true
-        , text: "{{ strtoupper('Sales peformance of author') }}"
+        , text: "<?php echo e(strtoupper('Sales peformance of author')); ?>"
       , },
 
     }
@@ -74,9 +100,9 @@
 
 </script>
 <script>
-  var xValues = ["{{ fake()->name }}", "{{ fake()->name }}", "{{ fake()->name }}", "{{ fake()->name }}"
-    , "{{ fake()->name }}", "{{ fake()->name }}", "{{ fake()->name }}"
-    , "{{ fake()->name }}", "{{ fake()->name }}"
+  var xValues = ["<?php echo e(fake()->name); ?>", "<?php echo e(fake()->name); ?>", "<?php echo e(fake()->name); ?>", "<?php echo e(fake()->name); ?>"
+    , "<?php echo e(fake()->name); ?>", "<?php echo e(fake()->name); ?>", "<?php echo e(fake()->name); ?>"
+    , "<?php echo e(fake()->name); ?>", "<?php echo e(fake()->name); ?>"
   ];
   var yValues = [55, 49, 44, 24, 15, 12, 56, 78, 5, 34, 67, 90];
   var barColors = ["#199f47", '#f98677', '#f9f677', '#398677', '#a9ff77', '#398ff7'
@@ -99,7 +125,7 @@
     , options: {
       title: {
         display: true
-        , text: "{{ strtoupper('Sales peformance of author') }}"
+        , text: "<?php echo e(strtoupper('Sales peformance of author')); ?>"
       , },
 
     }
@@ -147,4 +173,4 @@
   });
 
 </script>
-@endpush
+<?php $__env->stopPush(); ?><?php /**PATH /Users/user/Documents/projects/hbs/resources/views/livewire/admin-dashboard.blade.php ENDPATH**/ ?>
