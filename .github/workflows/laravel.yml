@@ -1,35 +1,42 @@
-name: Laravel
-
+name: Build and Deploy
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - master
   pull_request:
-    branches: [ "master" ]
+    branches:
+      - master
 
 jobs:
-  laravel-tests:
-
+  build:
+    name: Build and Deploy
     runs-on: ubuntu-latest
-
     steps:
-    - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
-      with:
-        php-version: '8.1'
-    - uses: actions/checkout@v3
-    - name: Copy .env
-      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-    - name: Install Dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-    - name: Generate key
-      run: php artisan key:generate
-    - name: Directory Permissions
-      run: chmod -R 777 storage bootstrap/cache
-    - name: Create Database
-      run: |
-        mkdir -p database
-        touch database/database.sqlite
-    - name: Execute tests (Unit and Feature tests) via PHPUnit
-      env:
-        DB_CONNECTION: sqlite
-        DB_DATABASE: database/database.sqlite
-      run: vendor/bin/phpunit
+      - name: Checkout Repository
+        uses: actions/checkout@master
+      - name: Setup Enviroment
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.1"
+      - name: Install Packages
+        run: composer install --no-dev
+      - name: Clear Config
+        run: php artisan config:clear
+
+      - name: autoload
+        run: composer dump-autoload
+
+      - name: Clear route
+        run: php artisan route:clear
+
+      - name: Clear Cache
+        run: php artisan cache:clear
+
+      - name: executing remote ssh commands to deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          port: "65002"
+          key: ${{ secrets.PRIVATE_KEY }}
+          script: "cd /home/u374771430/domains/bowofade.biz/public_html/hbs && ./deploy.sh"
