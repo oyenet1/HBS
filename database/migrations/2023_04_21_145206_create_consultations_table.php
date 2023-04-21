@@ -23,6 +23,7 @@ return new class extends Migration {
             $table->text('purpose');
             $table->date('visited_at')->default(now());
             $table->date('checkout_at')->nullable();
+            $table->string('status')->default('unpaid');
             $table->timestamps();
         });
     }

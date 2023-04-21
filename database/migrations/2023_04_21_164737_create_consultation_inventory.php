@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Consultation;
+use App\Models\Inventory;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,14 +14,11 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('inventories', function (Blueprint $table) {
+        Schema::create('consultation_inventory', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('image')->nullable();
-            $table->double('price', 8, 2);
-            $table->integer('quantity');
-            $table->string('category')->default('drugs and medicine');
-            $table->string('code');
+            $table->foreignIdFor(Consultation::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Inventory::class)->constrained()->cascadeOnDelete();
+            $table->integer('quantity')->default(1)->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('inventories');
+        Schema::dropIfExists('consultation_inventory');
     }
 };
