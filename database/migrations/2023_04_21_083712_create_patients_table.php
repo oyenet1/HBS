@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
-            $table->string('patient_id')->unique();
+            $table->string('patient_id');
             $table->string('title');
             $table->string('name');
             $table->string('image')->nullable();
