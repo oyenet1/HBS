@@ -5,7 +5,6 @@ echo "Deploying application"
 
 (php artisan down --message 'The website is been quickly updated. Please tey again in minutes.') || true
   #update codebase
-  git stash
   git pull origin master
 
 #exit maintainance mode
