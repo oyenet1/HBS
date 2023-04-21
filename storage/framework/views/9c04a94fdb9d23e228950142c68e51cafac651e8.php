@@ -180,8 +180,8 @@
                 <span class="icon"><i class="mdi mdi-plus"></i></span>
               </a>
               <ul class="bg-white">
-                <li class="<?php echo e(request()->is('admin/courses') ? 'active' : 'bg-white'); ?>">
-                  <a href="" class="">
+                <li class="<?php echo e(request()->is('consultations/patients') ? 'active' : 'bg-white'); ?>">
+                  <a href="<?php echo e(route('patients')); ?>" class="">
                     <span class="md:pl-8">Patients</span>
                   </a>
                 </li>

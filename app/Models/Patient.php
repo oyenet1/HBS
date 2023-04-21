@@ -10,6 +10,11 @@ class Patient extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+        'deleted_at' => 'datetime',
+    ];
 
     public static function boot()
     {

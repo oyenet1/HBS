@@ -179,8 +179,8 @@
                 <span class="icon"><i class="mdi mdi-plus"></i></span>
               </a>
               <ul class="bg-white">
-                <li class="{{ request()->is('admin/courses') ? 'active' : 'bg-white' }}">
-                  <a href="" class="">
+                <li class="{{ request()->is('consultations/patients') ? 'active' : 'bg-white' }}">
+                  <a href="{{ route('patients') }}" class="">
                     <span class="md:pl-8">Patients</span>
                   </a>
                 </li>
