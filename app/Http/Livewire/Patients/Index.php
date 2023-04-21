@@ -10,6 +10,7 @@ use Livewire\WithPagination;
 class Index extends Component
 {
     use WithFileUploads, WithPagination;
+    public ?array $titles = ["Mr.", "Mrs.", "Ms.", "Prof.", "Dr."];
 
     public $name, $email, $phone, $address, $state, $nationality, $cid, $image, $title, $gender, $department, $occupation, $dob, $status, $lga, $blood_group;
     protected $listeners = [
@@ -51,16 +52,21 @@ class Index extends Component
     {
         $this->form = true;
     }
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
 
     function save()
     {
         $data = $this->validate([
             'title' => 'required',
-            'code' => 'required|unique:courses',
-            'unit' => 'required|min:1|numeric|digits:1',
-            'level_id' => 'required',
+            'name' => 'required',
+            'phone' => 'required|numeric|digits:10|unique:patients',
+            'email' => 'required|email|unique:patients',
+            'address' => 'required',
         ]);
-        $saved = Course::create($data);
+        $saved = Patient::create($data);
 
         if ($saved) {
             $this->form = false;
@@ -68,14 +74,38 @@ class Index extends Component
             $this->dispatchBrowserEvent('swal:success', [
                 'icon' => 'success',
                 'confirmButton' => '#0d2364',
-                'text' => $saved->code . ' has been added to list of courses',
-                'title' => 'Course added Successfully',
+                'text' => $saved->name . ' has been added to list of patients',
+                'title' => 'Patient added Successfully',
                 'timer' => 5000,
             ]);
 
             $this->refreshInputs();
         }
         return redirect()->back();
+    }
+
+    public function confirmDelete(Patient $patient)
+    {
+
+        $this->cid = $patient->id;
+        $this->dispatchBrowserEvent('swal:confirm');
+    }
+
+    public function delete()
+    {
+
+        $patient = Patient::findOrFail($this->cid);
+        $true = $patient->delete();
+
+        if ($true) {
+            $this->dispatchBrowserEvent('swal:success', [
+                'icon' => 'success',
+                'text' => 'A patient has been removed from the system including all the associated data',
+                'title' => 'Deleted Successfully',
+                'timer' => 5000,
+            ]);
+        }
+        $this->refreshInputs();
     }
     public function render()
     {

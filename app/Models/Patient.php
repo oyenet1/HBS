@@ -22,7 +22,7 @@ class Patient extends Model
 
         // creation of automatic patient id
         self::creating(function ($model) {
-            $model->patient_id = IdGenerator::generate(['table' => 'patients', 'field' => 'patient_id', 'length' => 12, 'prefix' => 'SHBS/PT-']);
+            $model->patient_id = IdGenerator::generate(['table' => 'patients', 'field' => 'patient_id', 'length' => 14, 'prefix' => 'SHBS-PT/']);
         });
     }
 }

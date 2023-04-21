@@ -85,12 +85,12 @@
         <thead class="w-full pb-4 text-xl border-b">
             <tr class="font-medium">
                 <th class="p-2 whitespace-nowrap"></th>
-                <th class="p-2 text-xl font-medium text-left">Patient ID</th>
-                <th class="p-2 text-xl font-medium text-left">Name</th>
-                <th class="p-2 text-xl font-medium text-left">Phone</th>
-                <th class="p-2 text-xl font-medium text-left">Gender</th>
-                <th class="p-2 text-xl font-medium text-left">Visited Last</th>
-                <th class="p-2 text-xl font-medium text-left">Status</th>
+                <th class="p-2 text-lg font-medium text-left">Patient ID</th>
+                <th class="p-2 text-lg font-medium text-left">Name</th>
+                <th class="p-2 text-lg font-medium text-left">Phone</th>
+                
+                <th class="p-2 text-lg font-medium text-left">Visited Last</th>
+                <th class="p-2 text-lg font-medium text-left">Status</th>
                 <th class="p-2"></th>
             </tr>
         </thead>
@@ -112,10 +112,7 @@
                     <?php echo e($patient->phone); ?>
 
                 </td>
-                <td class="p-2 whitespace-nowrap">
-                    <?php echo e($patient->gender); ?>
-
-                </td>
+                
                 <td class="p-2 whitespace-nowrap">
                     <p class="text-sm"><?php echo e($patient->updated_at->diffForHumans()); ?></p>
                 </td>
