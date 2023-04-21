@@ -15,7 +15,9 @@ return new class extends Migration {
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
             $table->string('patient_id')->unique();
+            $table->string('title');
             $table->string('name');
+            $table->string('image')->nullable();
             $table->string('phone');
             $table->string('email')->nullable();
             $table->string('gender')->nullable();
@@ -23,7 +25,7 @@ return new class extends Migration {
             $table->string('address')->nullable();
             $table->string('occupation')->nullable();
             $table->string('department')->nullable();
-            $table->string('state_of_origin')->nullable();
+            $table->string('state')->nullable();
             $table->date('dob')->nullable();
             $table->string('blood_group')->nullable();
             $table->string('lga')->nullable();
