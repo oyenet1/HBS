@@ -26,10 +26,6 @@ Route::view('/sales', 'layouts.dashboard');
 /* ----------------admin only route ------------*/
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:superadmin|administrator']], function () {
     Route::get('/users', \App\Http\Livewire\Users::class)->name('lecturers');
-    Route::get('/roles', \App\Http\Livewire\Guard::class)->name('gate');
-    Route::get('/levels', \App\Http\Livewire\Levels::class)->name('levels');
-    Route::get('/courses', \App\Http\Livewire\Courses::class)->name('courses');
-    Route::get('/courses/allocation', \App\Http\Livewire\Allocation::class)->name('allocations');
 });
 
 Route::get('/administrator/home', App\Http\Livewire\AdminDashboard::class)->middleware('role:superadmin|administrator');

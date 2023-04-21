@@ -18,7 +18,7 @@ module.exports = {
             colors: {
                 transparent: "transparent",
                 current: "currentColor",
-                'primary': {
+                'secondary': {
                     light: '#e6ffee',
                     DEFAULT: '#009933',
                     100: "#e8edfc",
@@ -32,7 +32,7 @@ module.exports = {
                     900: "#06102d",
                     dark: "#003311",
                 },
-                'secondary': {
+                'primary': {
                     light: '#e6ecff',
                     DEFAULT: '#0033cc',
                     100: "#fef2e7",
@@ -54,6 +54,9 @@ module.exports = {
                 'hd': '8px',
                 '4k': '8px',
             },
+            backgroundImage: {
+                'one': "url('/img/bg1.jpeg')",
+            }
         },
         themeVariants: ['light'],
         customForms: (theme) => ({
