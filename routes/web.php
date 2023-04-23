@@ -28,6 +28,8 @@ Route::group(['prefix' => 'consultations', 'middleware' => ['auth', 'role:supera
     Route::get('/patients', \App\Http\Livewire\Patients\Index::class)->name('patients.index');
     Route::get('/inventories', \App\Http\Livewire\Inventory\Index::class)->name('inventories.index');
     Route::get('/doctors', \App\Http\Livewire\Users::class)->name('doctors');
+    Route::get('records', \App\Http\Livewire\Consultation\Index::class)->name('consultations.index');
+    Route::get('/create', \App\Http\Livewire\Consultation\Create::class)->name('consultations.create');
 });
 
 Route::get('/administrator/home', App\Http\Livewire\AdminDashboard::class)->middleware('role:superadmin|administrator');

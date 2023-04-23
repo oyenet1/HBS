@@ -14,5 +14,7 @@ class Consultation extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'deleted_at' => 'datetime',
+        'visited_at' => 'datetime',
+        'checkout_at' => 'datetime',
     ];
 }

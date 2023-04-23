@@ -195,6 +195,16 @@
                     <span class="md:pl-8">Patients</span>
                   </a>
                 </li>
+                <li class="{{ request()->is('consultations/create') ? 'active' : 'bg-white' }}">
+                  <a href="{{ route('consultations.create') }}" class="">
+                    <span class="md:pl-8">Add Consultation</span>
+                  </a>
+                </li>
+                <li class="{{ request()->is('consultations/records') ? 'active' : 'bg-white' }}">
+                  <a href="{{ route('consultations.index') }}" class="">
+                    <span class="md:pl-8">View Consultations</span>
+                  </a>
+                </li>
               </ul>
             </li>
             @else

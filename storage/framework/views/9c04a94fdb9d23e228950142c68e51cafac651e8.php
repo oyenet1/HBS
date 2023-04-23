@@ -197,6 +197,16 @@
                     <span class="md:pl-8">Patients</span>
                   </a>
                 </li>
+                <li class="<?php echo e(request()->is('consultations/create') ? 'active' : 'bg-white'); ?>">
+                  <a href="<?php echo e(route('consultations.create')); ?>" class="">
+                    <span class="md:pl-8">Add Consultation</span>
+                  </a>
+                </li>
+                <li class="<?php echo e(request()->is('consultations/records') ? 'active' : 'bg-white'); ?>">
+                  <a href="<?php echo e(route('consultations.index')); ?>" class="">
+                    <span class="md:pl-8">View Consultations</span>
+                  </a>
+                </li>
               </ul>
             </li>
             <?php else: ?>
