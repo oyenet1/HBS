@@ -25,7 +25,8 @@ Route::view('/sales', 'layouts.dashboard');
 
 /* ----------------admin only route ------------*/
 Route::group(['prefix' => 'consultations', 'middleware' => ['auth', 'role:superadmin|administrator']], function () {
-    Route::get('/patients', \App\Http\Livewire\Patients\Index::class)->name('patients');
+    Route::get('/patients', \App\Http\Livewire\Patients\Index::class)->name('patients.index');
+    Route::get('/inventories', \App\Http\Livewire\Inventory\Index::class)->name('inventories.index');
 });
 
 Route::get('/administrator/home', App\Http\Livewire\AdminDashboard::class)->middleware('role:superadmin|administrator');

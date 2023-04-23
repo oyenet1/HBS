@@ -4,8 +4,9 @@ namespace App\Http\Livewire\Patients;
 
 use App\Models\Patient;
 use Livewire\Component;
-use Livewire\WithFileUploads;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads;
+use Artesaos\SEOTools\Facades\SEOTools;
 
 class Index extends Component
 {
@@ -110,6 +111,17 @@ class Index extends Component
             ]);
         }
         $this->refreshInputs();
+    }
+    public function mount()
+    {
+
+        SEOTools::setTitle('Patients- ' . config('app.name'));
+        SEOTools::setDescription('Lisy of all patients');
+        SEOTools::opengraph()->setUrl('http://current.url.com');
+        SEOTools::setCanonical('https://codecasts.com.br/lesson');
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite('@LuizVinicius73');
+        SEOTools::jsonLd()->addImage('https://codecasts.com.br/img/logo.jpg');
     }
     public function render()
     {

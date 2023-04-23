@@ -11,6 +11,8 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+    <?php echo SEO::generate(); ?>
+
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
@@ -168,7 +170,7 @@
           <ul class="menu-list space-y-1">
             <?php if(auth()->user()->hasRole('administrator')): ?>
             <li>
-              <a class="dropdown <?php echo e(request()->is('admin/courses*') ? 'active' : ''); ?>">
+              <a class="dropdown <?php echo e(request()->is('consultations/*') ? 'active' : ''); ?>">
                 <span class="icon">
                   <svg style="width:20px;height:20px" viewBox="0 0 24 24">
                     <path fill="currentColor"
@@ -180,7 +182,7 @@
               </a>
               <ul class="bg-white">
                 <li class="<?php echo e(request()->is('consultations/patients') ? 'active' : 'bg-white'); ?>">
-                  <a href="<?php echo e(route('patients')); ?>" class="">
+                  <a href="<?php echo e(route('patients.index')); ?>" class="">
                     <span class="md:pl-8">Patients</span>
                   </a>
                 </li>

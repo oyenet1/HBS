@@ -11,6 +11,7 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+    {!! SEO::generate() !!}
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -167,7 +168,7 @@
           <ul class="menu-list space-y-1">
             @if(auth()->user()->hasRole('administrator'))
             <li>
-              <a class="dropdown {{ request()->is('admin/courses*') ? 'active' : '' }}">
+              <a class="dropdown {{ request()->is('consultations/*') ? 'active' : '' }}">
                 <span class="icon">
                   <svg style="width:20px;height:20px" viewBox="0 0 24 24">
                     <path fill="currentColor"
@@ -179,7 +180,7 @@
               </a>
               <ul class="bg-white">
                 <li class="{{ request()->is('consultations/patients') ? 'active' : 'bg-white' }}">
-                  <a href="{{ route('patients') }}" class="">
+                  <a href="{{ route('patients.index') }}" class="">
                     <span class="md:pl-8">Patients</span>
                   </a>
                 </li>
