@@ -22,7 +22,7 @@ class Inventory extends Model
 
         // creation of automatic patient id
         self::creating(function ($model) {
-            $model->patient_id = IdGenerator::generate(['table' => 'inventories', 'field' => 'code', 'length' => 10, 'prefix' => 'INV-' . date('y') . '-']);
+            $model->code = IdGenerator::generate(['table' => 'inventories', 'field' => 'code', 'length' => 10, 'prefix' => 'INV-' . date('y') . '-']);
         });
     }
 

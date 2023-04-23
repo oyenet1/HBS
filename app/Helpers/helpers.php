@@ -49,8 +49,8 @@ function moneyFormat($money)
 {
     // dollar = '&#36' or '$dollar,
     // pound = '&#163' or &pound
-    $money = intval($money);
-    $salary =  number_format("$money", 2);
+    $money = doubleval($money);
+    $salary = number_format("$money", 2);
     return $salary;
 }
 
@@ -58,5 +58,5 @@ function performance($initial, $final)
 {
     $change = $initial - $final;
     $percent = round(($change / $initial) * 100);
-    return  $percent . '%';
+    return $percent . '%';
 }
