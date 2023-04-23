@@ -69,7 +69,8 @@
           </a>
           <div class="navbar-item">
             <div class="control">
-              <p class="text-center text-xl"><?php echo e(config('app.name')); ?></p>
+              <p class="text-center text-xl capitalize"><?php echo e(greeting() . ', '); ?> <span
+                  class="font-medium"><?php echo e(currentUser()->roles[0]->name); ?></span></p>
             </div>
           </div>
         </div>
@@ -135,8 +136,7 @@
           </div>
         </div>
         <div class="menu is-menu-main space-y-1 overflow-y-auto">
-          <p class="px-4 py-2 capitalize"><?php echo e(greeting() . ', '); ?> <span
-              class="font-medium"><?php echo e(currentUser()->roles[0]->name); ?></span></p>
+          
           <ul class="menu-list space-y-1">
             <li class="<?php echo e(request()->is('*/home') ? 'active' : ''); ?>">
               <a href="/">
@@ -165,6 +165,17 @@
                 <span class="menu-item-label">Profile</span>
               </a>
             </li>
+            <li class="--set-active-profile-html <?php echo e(request()->is('consultations/inventories') ? 'active' : ''); ?>">
+              <a href="<?php echo e(route('inventories.index')); ?>">
+                <span class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 1024 1024">
+                    <path fill="currentColor"
+                      d="M320 288v-22.336C320 154.688 405.504 64 512 64s192 90.688 192 201.664v22.4h131.072a32 32 0 0 1 31.808 28.8l57.6 576a32 32 0 0 1-31.808 35.2H131.328a32 32 0 0 1-31.808-35.2l57.6-576a32 32 0 0 1 31.808-28.8H320zm64 0h256v-22.336C640 189.248 582.272 128 512 128c-70.272 0-128 61.248-128 137.664v22.4zm-64 64H217.92l-51.2 512h690.56l-51.264-512H704v96a32 32 0 1 1-64 0v-96H384v96a32 32 0 0 1-64 0v-96z" />
+                  </svg>
+                </span>
+                <span class="menu-item-label">Inventories</span>
+              </a>
+            </li>
           </ul>
           <p class="menu-label">Consultation</p>
           <ul class="menu-list space-y-1">
@@ -189,17 +200,7 @@
               </ul>
             </li>
             <?php else: ?>
-            <li class="--set-active-profile-html">
-              <a href="">
-                <span class="icon">
-                  <svg style="width:20px;height:20px" viewBox="0 0 24 24">
-                    <path fill="currentColor"
-                      d="M19 13C19.34 13 19.67 13.04 20 13.09V10C20 8.9 19.11 8 18 8H17V6C17 3.24 14.76 1 12 1S7 3.24 7 6H9C9 4.34 10.34 3 12 3S15 4.34 15 6V8H6C4.89 8 4 8.9 4 10V20C4 21.1 4.89 22 6 22H13.81C13.3 21.12 13 20.1 13 19C13 15.69 15.69 13 19 13M12 17C10.9 17 10 16.11 10 15S10.9 13 12 13 14 13.9 14 15 13.11 17 12 17M22.5 17.25L17.75 22L15 19L16.16 17.84L17.75 19.43L21.34 15.84L22.5 17.25Z" />
-                  </svg>
-                </span>
-                <span class="menu-item-label">My Lessons</span>
-              </a>
-            </li>
+            
             <?php endif; ?>
           </ul>
 

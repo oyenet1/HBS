@@ -67,7 +67,8 @@
           </a>
           <div class="navbar-item">
             <div class="control">
-              <p class="text-center text-xl">{{ config('app.name') }}</p>
+              <p class="text-center text-xl capitalize">{{ greeting() . ', ' }} <span
+                  class="font-medium">{{ currentUser()->roles[0]->name }}</span></p>
             </div>
           </div>
         </div>
@@ -133,8 +134,7 @@
           </div>
         </div>
         <div class="menu is-menu-main space-y-1 overflow-y-auto">
-          <p class="px-4 py-2 capitalize">{{ greeting() . ', ' }} <span
-              class="font-medium">{{ currentUser()->roles[0]->name }}</span></p>
+          {{-- <p class="px-4 py-2 capitalize"></p> --}}
           <ul class="menu-list space-y-1">
             <li class="{{ request()->is('*/home') ? 'active' : '' }}">
               <a href="/">
@@ -163,6 +163,17 @@
                 <span class="menu-item-label">Profile</span>
               </a>
             </li>
+            <li class="--set-active-profile-html {{ request()->is('consultations/inventories') ? 'active' : '' }}">
+              <a href="{{ route('inventories.index') }}">
+                <span class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 1024 1024">
+                    <path fill="currentColor"
+                      d="M320 288v-22.336C320 154.688 405.504 64 512 64s192 90.688 192 201.664v22.4h131.072a32 32 0 0 1 31.808 28.8l57.6 576a32 32 0 0 1-31.808 35.2H131.328a32 32 0 0 1-31.808-35.2l57.6-576a32 32 0 0 1 31.808-28.8H320zm64 0h256v-22.336C640 189.248 582.272 128 512 128c-70.272 0-128 61.248-128 137.664v22.4zm-64 64H217.92l-51.2 512h690.56l-51.264-512H704v96a32 32 0 1 1-64 0v-96H384v96a32 32 0 0 1-64 0v-96z" />
+                  </svg>
+                </span>
+                <span class="menu-item-label">Inventories</span>
+              </a>
+            </li>
           </ul>
           <p class="menu-label">Consultation</p>
           <ul class="menu-list space-y-1">
@@ -187,7 +198,7 @@
               </ul>
             </li>
             @else
-            <li class="--set-active-profile-html">
+            {{-- <li class="--set-active-profile-html">
               <a href="">
                 <span class="icon">
                   <svg style="width:20px;height:20px" viewBox="0 0 24 24">
@@ -197,7 +208,7 @@
                 </span>
                 <span class="menu-item-label">My Lessons</span>
               </a>
-            </li>
+            </li> --}}
             @endif
           </ul>
 
