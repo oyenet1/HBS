@@ -1,27 +1,35 @@
 <div class="grid w-full gap-8 p-8 mx-auto xl:p-8 2xl:p-10 xl:gap-8 2xl:gap-10">
 
   <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 xl:gap-8 2xl:gap-10">
-    <x-board color="blue-500" name="Doctors" digit="{{ \App\Models\User::count() - 1 }}">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 2xl:w-8 2xl:h-8" fill="currentColor" class="bi bi-people"
-        viewBox="0 0 16 16">
-        <path
-          d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z" />
+    <x-board color="blue-500" name="Inventories" digit="{{ \App\Models\Inventory::count() }}">
+      <svg xmlns="http://www.w3.org/2000/svg" class="2xl:w-8 2xl:h-8 w-6 h-6" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16" />
+          <path d="M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4M10 9h4m-2-2v4" />
+        </g>
       </svg>
     </x-board>
     <x-board color="blue-500" name="In Patients"
       digit="{{ \App\Models\Patient::where('status', 'in-patient')->count() }}">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-green-600 2xl:w-8 2xl:h-8" fill="currentColor"
-        class="bi bi-people" viewBox="0 0 16 16">
-        <path
-          d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z" />
+      <svg xmlns="http://www.w3.org/2000/svg" class="2xl:w-8 2xl:h-8 w-6 h-6 text-pink-600" viewBox="0 0 32 32">
+        <path fill="currentColor"
+          d="M25 16h-8a2.002 2.002 0 0 0-2 2v6H4V14H2v16h2v-4h24v4h2v-9a5.006 5.006 0 0 0-5-5Zm3 8H17v-6h8a3.003 3.003 0 0 1 3 3Z" />
+        <path fill="currentColor"
+          d="M9.5 17A1.5 1.5 0 1 1 8 18.5A1.502 1.502 0 0 1 9.5 17m0-2a3.5 3.5 0 1 0 3.5 3.5A3.5 3.5 0 0 0 9.5 15zM21 6h-4V2h-2v4h-4v2h4v4h2V8h4V6z" />
       </svg>
     </x-board>
     <x-board color="blue-500" name="Out Patients"
       digit="{{ \App\Models\Patient::where('status', 'out-patient')->count() }}">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 text-red-600 h-6 2xl:w-8 2xl:h-8" fill="currentColor"
-        class="bi bi-people" viewBox="0 0 16 16">
-        <path
-          d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z" />
+      <svg xmlns="http://www.w3.org/2000/svg" class="2xl:w-8 2xl:h-8 w-6 h-6 text-pink-600" viewBox="0 0 48 48">
+        <mask id="ipTHospitalFour0">
+          <g fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="4">
+            <path fill="#555" d="M4 8a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v34H6a2 2 0 0 1-2-2V8Z" />
+            <path d="M21 42v-9a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3v9" />
+            <path fill="#555" d="M28 24h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H28V24Z" />
+            <path stroke-linecap="round" d="M12 18h8m14 12h4m-4 6h4M16 14v8M7 42h18" />
+          </g>
+        </mask>
+        <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTHospitalFour0)" />
       </svg>
     </x-board>
     <x-board color="red-500" name="patients" digit="{{ \App\Models\Patient::count() }}">
