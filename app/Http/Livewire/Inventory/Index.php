@@ -35,6 +35,7 @@ class Index extends Component
         $this->cid = null;
         $this->form = null;
         $this->update = null;
+        $this->resetPage();
     }
 
     public function updatingSearch()

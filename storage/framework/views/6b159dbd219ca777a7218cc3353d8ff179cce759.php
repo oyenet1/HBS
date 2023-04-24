@@ -54,11 +54,11 @@
             <thead class="w-full pb-4 text-xl border-b">
                 <tr class="font-medium">
                     <th class="p-2 whitespace-nowrap"></th>
-                    <th class="p-2 text-lg font-medium text-left">Name</th>
-                    <th class="p-2 text-lg font-medium text-left">Code</th>
-                    <th class="p-2 text-lg font-medium text-left">Price</th>
-                    <th class="p-2 text-lg font-medium text-left">Categories</th>
-                    <th class="p-2 text-lg font-medium">Quantity</th>
+                    <th class="p-2 text-lg font-medium text-left">Patient Name</th>
+                    <th class="p-2 text-lg font-medium text-left">Charges</th>
+                    <th class="p-2 text-lg font-medium text-center">Status</th>
+                    <th class="p-2 text-lg font-medium text-left">Date Visited</th>
+                    <th class="p-2 text-lg font-medium">Checkout Date</th>
                     <th class="p-2"></th>
                 </tr>
             </thead>
@@ -70,29 +70,55 @@
                             class="block rounded whitespace-nowrap text-primary focus:outline-none focus:ring-primary">
                     </td>
                     <td class="p-2 whitespace-nowrap capitalize">
-                        <?php echo e($consultation->name); ?>
+                        <?php echo e($consultation->patient->name); ?>
 
-                    </td>
-                    <td class="p-2 text-black text-sm">
-                        <?php echo DNS1D::getBarcodeHTML("$consultation->code", 'C39+', 1, 30, "BLACK"); ?>
-
-                        <span class=""><?php echo e($consultation->code); ?></span>
                     </td>
                     <td class="p-2 whitespace-nowrap">
-                        <span class="py-1 px-2 rounded text-sm text-green-600 bg-green-100"> &#8358;
-                            <?php echo e(moneyFormat($consultation->price)); ?></span>
+                        <span class="py-1 px-2 rounded text-sm"> &#8358;
+                            <?php echo e(moneyFormat($consultation->fee)); ?></span>
                     </td>
-                    <td class="p-2 whitespace-nowrap text-sm uppercase">
-                        <?php echo e($consultation->category); ?>
+                    <td class="p-2 text-black text-center items-center text-sm capitalize">
+                        <?php if($consultation->status == 'unpaid'): ?>
+                        <span class="text-red-600 inline-block">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M12 22q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22Zm0-2q3.35 0 5.675-2.325T20 12q0-1.6-.6-3.075t-1.725-2.6L12 12V4Q8.65 4 6.325 6.325T4 12q0 3.35 2.325 5.675T12 20Z" />
+                            </svg>
+                        </span>
+                        <?php else: ?>
+                        <span class="text-green-600 inline-block">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="m23 12l-2.44-2.78l.34-3.68l-3.61-.82l-1.89-3.18L12 3L8.6 1.54L6.71 4.72l-3.61.81l.34 3.68L1 12l2.44 2.78l-.34 3.69l3.61.82l1.89 3.18L12 21l3.4 1.46l1.89-3.18l3.61-.82l-.34-3.68L23 12m-13 5l-4-4l1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8Z" />
+                            </svg>
+                        </span>
+                        <?php endif; ?>
+                    </td>
+
+                    <td class="p-2 whitespace-nowrap text-sm">
+                        <?php echo e($consultation->visited_at->diffForhumans()); ?>
 
                     </td>
-                    <td class="p-2 whitespace-nowrap text-center">
-                        <?php echo e($consultation->quantity); ?>
+                    <td class="p-2 whitespace-nowrap text-center text-sm">
+                        <?php echo e($consultation->checkout_at->format('D d, M, y')); ?>
 
                     </td>
                     
                     <td class="p-2 whitespace-nowrap">
                         <div class="flex space-x-2 item-center">
+                            <a href="" class="w-8 h-8 p-2 text-white border bg-blue-600 rounded-md cursor-pointer tt">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="my-auto bi bi-eye" viewBox="0 0 16 16">
+                                    <path
+                                        d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                                    <path
+                                        d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                                </svg>
+                            </a>
+                            <span wire:click="pay(<?php echo e($consultation->id); ?>)"
+                                class=" py-1 px-2 text-sm bg-green-600 border text-white rounded-md cursor-pointer tt ">
+                                Pay
+                            </span>
                             <span wire:click="edit(<?php echo e($consultation->id); ?>)"
                                 class="w-8 h-8 p-1 text-blue-600 border border-blue-600 rounded-md cursor-pointer tt hover:-translate-y-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

@@ -12,6 +12,9 @@ class Create extends Component
 {
     public $patient_id, $user_id, $admitted, $fee, $purpose, $visited_at, $checkout_at, $status, $inventory_id, $consultation_id, $quantity = 1;
 
+    protected $listeners = [
+        'redirectToConsultationPage' => 'redirectToConsultationListPage'
+    ];
     public $orders = [];
     public $count = 0;
     public $inventories = [];
@@ -28,6 +31,7 @@ class Create extends Component
         $this->status = null;
         $this->inventory_id = null;
         $this->consultation_id = null;
+        $this->orders = [];
     }
 
     function save()
@@ -58,14 +62,17 @@ class Create extends Component
             $this->dispatchBrowserEvent('swal:success', [
                 'icon' => 'success',
                 'confirmButton' => '#0d2364',
-                'text' => 'Record has been added to consultation',
+                'text' => 'Data has been added to list of consultation records',
                 'title' => 'Consultation saved Successfully',
                 'timer' => 5000,
             ]);
-
-            $this->refreshInputs();
         }
+        $this->dispatchBrowserEvent('redirectTo');
+    }
 
+    function redirectToConsultationListPage()
+    {
+        return redirect()->route('consultations.index');
     }
 
     function addOrder()
