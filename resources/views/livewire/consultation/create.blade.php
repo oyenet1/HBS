@@ -79,7 +79,7 @@
                                 <option value="select" class="text-sm">-- Inventory --</option>
                                 @foreach ($inventories as $inventory)
                                 <option class="py-1 capitalize" value="{{ $inventory->id }}">
-                                    <pre>{!! $inventory->name . '&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;' . ' '.$inventory->category !!} #{{ moneyFormat($inventory->price) }} 
+                                    <pre>{!! $inventory->name . '&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;' . ' ('.$inventory->category. ')' !!} #{{ moneyFormat($inventory->price) }} 
                                     </pre>
                                 </option>
                                 @endforeach

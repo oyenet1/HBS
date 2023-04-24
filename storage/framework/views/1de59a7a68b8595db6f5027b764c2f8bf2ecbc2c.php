@@ -129,7 +129,7 @@ unset($__errorArgs, $__bag); ?>
                                 <option value="select" class="text-sm">-- Inventory --</option>
                                 <?php $__currentLoopData = $inventories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $inventory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <option class="py-1 capitalize" value="<?php echo e($inventory->id); ?>">
-                                    <pre><?php echo $inventory->name . '&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'; ?> #<?php echo e(moneyFormat($inventory->price)); ?> 
+                                    <pre><?php echo $inventory->name . '&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;' . ' ('.$inventory->category. ')'; ?> #<?php echo e(moneyFormat($inventory->price)); ?> 
                                     </pre>
                                 </option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
