@@ -1082,6 +1082,18 @@ a.active:active,
 .w-full{
   width: 100%;
 }
+.w-\[100px\]{
+  width: 100px;
+}
+.w-\[20\%\]{
+  width: 20%;
+}
+.min-w-\[400px\]{
+  min-width: 400px;
+}
+.min-w-\[80\%\]{
+  min-width: 80%;
+}
 .max-w-3xl{
   max-width: 48rem;
 }
@@ -1149,6 +1161,9 @@ a.active:active,
 .grid-cols-2{
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
+.flex-row{
+  flex-direction: row;
+}
 .flex-col{
   flex-direction: column;
 }
@@ -1184,6 +1199,13 @@ a.active:active,
 }
 .gap-8{
   gap: 2rem;
+}
+.gap-x-4{
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+}
+.gap-y-2{
+  row-gap: 0.5rem;
 }
 .space-x-2 > :not([hidden]) ~ :not([hidden]){
   --tw-space-x-reverse: 0;
@@ -1460,6 +1482,10 @@ a.active:active,
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+.bg-green-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
 }
 .bg-opacity-50{
   --tw-bg-opacity: 0.5;
@@ -1930,6 +1956,16 @@ a.active:active,
   font-weight: normal;
 }
 
+.placeholder\:text-gray-300::-moz-placeholder{
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+
+.placeholder\:text-gray-300::placeholder{
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+
 .even\:bg-primary-light:nth-child(even){
   --tw-bg-opacity: 1;
   background-color: rgb(230 236 255 / var(--tw-bg-opacity));
@@ -2024,6 +2060,11 @@ a.active:active,
 .hover\:bg-primary-800:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(122 62 6 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-green-800:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 101 52 / var(--tw-bg-opacity));
 }
 
 .hover\:text-gray-400:hover{
@@ -2135,6 +2176,11 @@ a.active:active,
 .focus\:bg-white:focus{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.focus\:text-primary:focus{
+  --tw-text-opacity: 1;
+  color: rgb(0 51 204 / var(--tw-text-opacity));
 }
 
 .focus\:outline-none:focus{
@@ -2313,6 +2359,9 @@ a.active:active,
 }
 
 @media (min-width: 768px){
+  .md\:col-span-2{
+    grid-column: span 2 / span 2;
+  }
   .md\:mx-0{
     margin-left: 0px;
     margin-right: 0px;
@@ -2365,6 +2414,9 @@ a.active:active,
   }
   .md\:gap-4{
     gap: 1rem;
+  }
+  .md\:gap-8{
+    gap: 2rem;
   }
   .md\:space-x-16 > :not([hidden]) ~ :not([hidden]){
     --tw-space-x-reverse: 0;
@@ -2441,6 +2493,9 @@ a.active:active,
   }
   .lg\:col-span-3{
     grid-column: span 3 / span 3;
+  }
+  .lg\:col-span-4{
+    grid-column: span 4 / span 4;
   }
   .lg\:mb-0{
     margin-bottom: 0px;

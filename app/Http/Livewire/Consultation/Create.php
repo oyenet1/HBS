@@ -2,6 +2,9 @@
 
 namespace App\Http\Livewire\Consultation;
 
+use App\Models\Inventory;
+use App\Models\User;
+use App\Models\Patient;
 use Livewire\Component;
 
 class Create extends Component
@@ -30,16 +33,20 @@ class Create extends Component
             'user_id' => 'nullable',
             'admitted' => 'nullable',
             'purpose' => 'required',
-            'quantity' => 'nullable|numeric',
+            'quantity.*' => 'nullable|numeric',
+            'fee' => 'required|numeric',
             'visited_at' => 'required|before_or_equal:today',
             'checkout_at' => 'nullable|after_or_equal:today',
-            'inventory_id.*' => 'nullable',
-            'consulation_id.*' => 'required',
+            'inventory_id.*' => 'required',
+            'consultation_id.*' => 'nullable',
         ]);
 
     }
     public function render()
     {
-        return view('livewire.consultation.create');
+        $patients = Patient::select(['id', 'name'])->get();
+        $doctors = User::whereRelation('roles', 'name', 'doctor')->get();
+        $inventories = Inventory::all();
+        return view('livewire.consultation.create', compact(['patients', 'doctors', 'inventories']));
     }
 }
