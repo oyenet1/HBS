@@ -1330,10 +1330,6 @@ td {
     text-align: left;
     vertical-align: middle;
   }
-  tr:nth-child(odd) td {
-    --tw-bg-opacity: 1;
-    background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
-  }
 }
 td:last-child {
   border-bottom-width: 0;

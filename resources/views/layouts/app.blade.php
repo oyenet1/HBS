@@ -56,6 +56,7 @@
       } */
     </style>
     @livewireStyles
+    @stack('styles')
   </head>
 
   <body>
@@ -298,5 +299,6 @@
     @stack('scripts')
     {{-- @yield('scripts') --}}
   </body>
+  @stack('scripts')
 
 </html>

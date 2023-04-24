@@ -48,7 +48,7 @@
                 <span class="mb-2 text-red-600 text-sm pt-2">{{ $message }}</span>
                 @enderror
             </div>
-            <div class="flex flex-col  gap-2 p-3 shadow rounded-lg">
+            <div class="flex flex-col  gap-2 p-3 rounded-lg">
                 <label class="text-sm" for="admitted_at">Date Visited</label>
                 <input id="admitted_at" type="date" wire:model="visited_at"
                     class="rounded-lg uppercase border-0 text-sm py-2 bg-gray-100 focus:text-primary">
@@ -56,7 +56,7 @@
                 <span class="mb-2 text-red-600 text-sm pt-2">{{ $message }}</span>
                 @enderror
             </div>
-            <div class="flex flex-col  gap-2 p-3 shadow rounded-lg">
+            <div class="flex flex-col  gap-2 p-3 rounded-lg">
                 <label class="text-sm" for="checkout">Date Checkout</label>
                 <input id="checkout" type="date" wire:model="checkout_at"
                     class="rounded-lg uppercase border-0 text-sm py-2 bg-gray-100 focus:text-primary">
@@ -65,34 +65,47 @@
                 @enderror
             </div>
             <div class="w-full md:col-span-2 lg:col-span-4 gap-4 md:gap-8">
-                <div class="flex justify-between items-center">
+                <div class="flex mb-2 justify-between items-center">
                     <h1 class="font-medium text-xl">Add Inventories</h1>
-                    <span class="text-white cursor-pointer bg-green-500 tt hover:bg-green-700 text-2xl rounded px-2">+
-                    </span>
                 </div>
-                <div class="grid gap-y-2 py-4 w-full">
-                    <div class="flex flex-row gap-4 items-center">
-                        <div class="flex-1 min-w-[80%] space-y-1 w-full">
-                            <select wire:model.defer="inventory_id"
+                <table class="w-full" style="background-color: white; padding:0px">
+                    <thead class="tr my-2 bg-gray-50 border-y ">
+                        <th class="p-2 border-x ">Inventories</th>
+                        <th class="p-2">Quantity</th>
+                    </thead>
+                    @foreach($orders as $key => $order)
+                    <tr class="w-full odd:bg-white oddRow">
+                        <td class="border">
+                            <select wire:model="orders.{{ $key }}.inventory_id"
                                 class='w-full h-full pl-4 space-y-1 font-medium text-gray-500 placeholder-gray-500 capitalize shadow bg-gray-100 border-0 rounded peer tt focus:bg-white focus:outline-none'
                                 id="">
                                 <option value="select" class="text-sm">-- Inventory --</option>
                                 @foreach ($inventories as $inventory)
                                 <option class="py-1 capitalize" value="{{ $inventory->id }}">
                                     <pre>{!! $inventory->name . '&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;' . ' ('.$inventory->category. ')' !!} #{{ moneyFormat($inventory->price) }} 
-                                    </pre>
+                                        </pre>
                                 </option>
                                 @endforeach
                             </select>
                             @error('inventory_id')
                             <span class="text-red-600 text-sm">{{ $message }}</span>
                             @enderror
-                        </div>
-                        <x-text-input class="w-[30%] py-2" label="-- quantity --*" name="quantity" type="number"
-                            wire:model.defer="quantity" />
-                    </div>
+                        </td>
+                        <td class="border">
+                            <input value="{{ $order['quantity'] }}" type="number"
+                                class="px-4 py-2 w-[80px] rounded-lg shadow border-0"
+                                wire:model="orders.{{ $key }}.quantity">
+                            <span wire:click="removeOrder({{ $key }})"
+                                class="px-4 cursor-pointer py-2 rounded-lg bg-red-100 text-red-600 text-sm">Delete</span>
+                        </td>
+                    </tr>
+                    @endforeach
 
-                </div>
+                </table>
+                <span wire:click="addOrder"
+                    class="text-white mt-2 cursor-pointer inline-block bg-green-500 tt hover:bg-green-700 text-sm py-2 max-w-max rounded px-4">Add
+                    more Inventory
+                </span>
             </div>
             <div class="w-full flex justify-end md:col-span-2 lg:col-span-4">
                 <button type="submit" class="px-4 py-2 rounded-lg text-white bg-primary tt">save</button>
@@ -100,3 +113,10 @@
         </form>
     </div>
 </div>
+@push('styles')
+<style>
+    tr.oddRow:odd td {
+        background-color: white !important;
+    }
+</style>
+@endpush

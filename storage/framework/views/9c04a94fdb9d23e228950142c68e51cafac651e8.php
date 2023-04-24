@@ -58,6 +58,7 @@
     </style>
     <?php echo \Livewire\Livewire::styles(); ?>
 
+    <?php echo $__env->yieldPushContent('styles'); ?>
   </head>
 
   <body>
@@ -292,5 +293,6 @@
     <?php echo $__env->yieldPushContent('scripts'); ?>
     
   </body>
+  <?php echo $__env->yieldPushContent('scripts'); ?>
 
 </html><?php /**PATH /Users/user/Documents/projects/hbs/resources/views/layouts/app.blade.php ENDPATH**/ ?>
