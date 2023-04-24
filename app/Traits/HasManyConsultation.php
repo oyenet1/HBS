@@ -10,8 +10,13 @@ trait HasManyConsultation
   {
     return $this->belongsTo(Consultation::class);
   }
-  function consultations()
+  function consults()
   {
     return $this->hasMany(Consultation::class);
+  }
+
+  function consultations()
+  {
+    return $this->belongsToMany(Consultation::class);
   }
 }

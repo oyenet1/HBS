@@ -10,6 +10,12 @@ class Consultation extends Model
     use HasFactory;
     protected $guarded = [];
 
+    // inventories relationship
+    function inventories()
+    {
+        return $this->belongsToMany(Inventory::class);
+    }
+
     protected $casts = [
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
