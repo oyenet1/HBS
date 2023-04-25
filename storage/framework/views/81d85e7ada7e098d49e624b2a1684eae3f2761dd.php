@@ -44,7 +44,7 @@
 <?php unset($__componentOriginal15802cba71b9a49a312c120e81efb512b75cd6c8); ?>
 <?php endif; ?>
     <?php if (isset($component)) { $__componentOriginal15802cba71b9a49a312c120e81efb512b75cd6c8 = $component; } ?>
-<?php $component = App\View\Components\Board::resolve(['color' => 'blue-500','name' => 'Out Patients','digit' => ''.e(\App\Models\Patient::where('status', 'out-patient')->count()).''] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component = App\View\Components\Board::resolve(['color' => 'purple-600','name' => 'Out Patients','digit' => ''.e(\App\Models\Patient::where('status', 'out-patient')->count()).''] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('board'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
@@ -52,7 +52,7 @@
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-      <svg xmlns="http://www.w3.org/2000/svg" class="2xl:w-8 2xl:h-8 w-6 h-6 text-pink-600" viewBox="0 0 48 48">
+      <svg xmlns="http://www.w3.org/2000/svg" class="2xl:w-8 2xl:h-8 w-6 h-6" viewBox="0 0 48 48">
         <mask id="ipTHospitalFour0">
           <g fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="4">
             <path fill="#555" d="M4 8a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v34H6a2 2 0 0 1-2-2V8Z" />
@@ -70,7 +70,7 @@
 <?php unset($__componentOriginal15802cba71b9a49a312c120e81efb512b75cd6c8); ?>
 <?php endif; ?>
     <?php if (isset($component)) { $__componentOriginal15802cba71b9a49a312c120e81efb512b75cd6c8 = $component; } ?>
-<?php $component = App\View\Components\Board::resolve(['color' => 'red-500','name' => 'patients','digit' => ''.e(\App\Models\Patient::count()).''] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component = App\View\Components\Board::resolve(['color' => 'green-600','name' => 'patients','digit' => ''.e(\App\Models\Patient::count()).''] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('board'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
@@ -96,10 +96,10 @@
 <?php endif; ?>
   </div>
   <div class="grid gap-8 lg:grid-cols-2 xl:gap-8 2xl:gap-10">
-    <div class="p-8 bg-white rounded shadow-sm">
+    <div class="p-8 bg-white rounded shadow-sm col-span-2">
       <canvas id="myChart" class="w-full h-full"></canvas>
     </div>
-    <div class="p-8 bg-white rounded shadow-sm">
+    <div class="p-8 bg-white rounded shadow-sm col-span-2">
       <canvas id="pieChart" class="w-full h-full"></canvas>
     </div>
   </div>
@@ -140,7 +140,7 @@
     , options: {
       title: {
         display: true
-        , text: "<?php echo e(strtoupper('Sales peformance of author')); ?>"
+        , text: "<?php echo e(strtoupper('Consulatation data')); ?>"
       , },
 
     }

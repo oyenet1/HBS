@@ -18,9 +18,9 @@
           d="M9.5 17A1.5 1.5 0 1 1 8 18.5A1.502 1.502 0 0 1 9.5 17m0-2a3.5 3.5 0 1 0 3.5 3.5A3.5 3.5 0 0 0 9.5 15zM21 6h-4V2h-2v4h-4v2h4v4h2V8h4V6z" />
       </svg>
     </x-board>
-    <x-board color="blue-500" name="Out Patients"
+    <x-board color="purple-600" name="Out Patients"
       digit="{{ \App\Models\Patient::where('status', 'out-patient')->count() }}">
-      <svg xmlns="http://www.w3.org/2000/svg" class="2xl:w-8 2xl:h-8 w-6 h-6 text-pink-600" viewBox="0 0 48 48">
+      <svg xmlns="http://www.w3.org/2000/svg" class="2xl:w-8 2xl:h-8 w-6 h-6" viewBox="0 0 48 48">
         <mask id="ipTHospitalFour0">
           <g fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="4">
             <path fill="#555" d="M4 8a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v34H6a2 2 0 0 1-2-2V8Z" />
@@ -32,7 +32,7 @@
         <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTHospitalFour0)" />
       </svg>
     </x-board>
-    <x-board color="red-500" name="patients" digit="{{ \App\Models\Patient::count() }}">
+    <x-board color="green-600" name="patients" digit="{{ \App\Models\Patient::count() }}">
 
       <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6 bi bi-journal-richtext 2xl:w-8 2xl:h-8"
         viewBox="0 0 16 16">
@@ -46,10 +46,10 @@
     </x-board>
   </div>
   <div class="grid gap-8 lg:grid-cols-2 xl:gap-8 2xl:gap-10">
-    <div class="p-8 bg-white rounded shadow-sm">
+    <div class="p-8 bg-white rounded shadow-sm col-span-2">
       <canvas id="myChart" class="w-full h-full"></canvas>
     </div>
-    <div class="p-8 bg-white rounded shadow-sm">
+    <div class="p-8 bg-white rounded shadow-sm col-span-2">
       <canvas id="pieChart" class="w-full h-full"></canvas>
     </div>
   </div>
@@ -90,7 +90,7 @@
     , options: {
       title: {
         display: true
-        , text: "{{ strtoupper('Sales peformance of author') }}"
+        , text: "{{ strtoupper('Consulatation data') }}"
       , },
 
     }
