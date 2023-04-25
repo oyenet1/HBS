@@ -50,7 +50,7 @@
                     </td>
                     <td class="p-2 text-black text-center items-center text-sm capitalize">
                         @if ($consultation->status == 'unpaid')
-                        <span class="text-red-600 inline-block">
+                        <span class="text-red-600 inline-block animate-spin">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24">
                                 <path fill="currentColor"
                                     d="M12 22q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22Zm0-2q3.35 0 5.675-2.325T20 12q0-1.6-.6-3.075t-1.725-2.6L12 12V4Q8.65 4 6.325 6.325T4 12q0 3.35 2.325 5.675T12 20Z" />
@@ -72,24 +72,13 @@
                     <td class="p-2 whitespace-nowrap text-center text-sm">
                         {{ $consultation->checkout_at->format('D d, M, y') }}
                     </td>
-                    {{-- <td class="p-2 whitespace-nowrap">
-                    @if ($consultation->status == 'in-consultation')
-                    <span
-                        class="p-1 text-xs uppercase rounded bg-green-100 text-green-600 px-2 shadow">{{ $consultation->status }}</span>
-                    @else
-                    <span
-                        class="p-1 text-xs uppercase rounded bg-red-100 text-red-600 px-2 shadow">{{ $consultation->status }}</span>
-                    @endif
-                    </td> --}}
                     <td class="p-2 whitespace-nowrap">
                         <div class="flex space-x-2 item-center">
-                            <a href="" class="w-8 h-8 p-2 text-white border bg-blue-600 rounded-md cursor-pointer tt">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="my-auto bi bi-eye" viewBox="0 0 16 16">
-                                    <path
-                                        d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
-                                    <path
-                                        d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                            <a href="{{ route('consultations.invoice', [$consultation->id]) }}"
+                                class="w-8 h-8 p-[5px] text-white border bg-blue-600 rounded-md cursor-pointer tt">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                        d="M6.5 20q-2.28 0-3.89-1.57Q1 16.85 1 14.58q0-1.95 1.17-3.48q1.18-1.53 3.08-1.95q.43-1.8 2.13-3.42Q9.07 4.1 11 4.1q.83 0 1.41.59q.59.59.59 1.41v6.05l1.6-1.55L16 12l-4 4l-4-4l1.4-1.4l1.6 1.55V6.1q-1.9.35-2.95 1.84Q7 9.43 7 11h-.5q-1.45 0-2.47 1.03Q3 13.05 3 14.5q0 1.45 1.03 2.5q1.02 1 2.47 1h12q1.05 0 1.77-.73q.73-.72.73-1.77t-.73-1.77Q19.55 13 18.5 13H17v-2q0-1.2-.55-2.24Q15.9 7.73 15 7V4.68q1.85.87 2.93 2.58Q19 9 19 11q1.73.2 2.86 1.5q1.14 1.28 1.14 3q0 1.88-1.31 3.19T18.5 20M12 11.05Z" />
                                 </svg>
                             </a>
                             <span wire:click="pay({{ $consultation->id }})"

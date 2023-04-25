@@ -927,6 +927,9 @@ a.active:active,
 .mt-8{
   margin-top: 2rem;
 }
+.mr-0{
+  margin-right: 0px;
+}
 .block{
   display: block;
 }
@@ -1094,8 +1097,14 @@ a.active:active,
 .w-\[80px\]{
   width: 80px;
 }
+.w-32{
+  width: 8rem;
+}
 .min-w-\[80\%\]{
   min-width: 80%;
+}
+.min-w-\[200px\]{
+  min-width: 200px;
 }
 .max-w-3xl{
   max-width: 48rem;
@@ -1132,6 +1141,9 @@ a.active:active,
 .max-w-xl{
   max-width: 36rem;
 }
+.max-w-5xl{
+  max-width: 64rem;
+}
 .flex-1{
   flex: 1 1 0%;
 }
@@ -1143,6 +1155,14 @@ a.active:active,
 }
 .transform{
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+@keyframes spin{
+  to{
+    transform: rotate(360deg);
+  }
+}
+.animate-spin{
+  animation: spin 1s linear infinite;
 }
 .cursor-default{
   cursor: default;
@@ -1172,6 +1192,9 @@ a.active:active,
 }
 .place-items-center{
   place-items: center;
+}
+.items-end{
+  align-items: flex-end;
 }
 .items-center{
   align-items: center;
@@ -1568,6 +1591,12 @@ a.active:active,
 }
 .p-8{
   padding: 2rem;
+}
+.p-\[6px\]{
+  padding: 6px;
+}
+.p-\[5px\]{
+  padding: 5px;
 }
 .px-0{
   padding-left: 0px;
@@ -2392,6 +2421,10 @@ a.active:active,
   .md\:my-6{
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
+  }
+  .md\:my-8{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
   .md\:flex{
     display: flex;

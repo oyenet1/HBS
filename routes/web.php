@@ -30,6 +30,7 @@ Route::group(['prefix' => 'consultations', 'middleware' => ['auth', 'role:supera
     Route::get('/doctors', \App\Http\Livewire\Users::class)->name('doctors');
     Route::get('records', \App\Http\Livewire\Consultation\Index::class)->name('consultations.index');
     Route::get('/create', \App\Http\Livewire\Consultation\Create::class)->name('consultations.create');
+    Route::get('/invoice/{invoice}', \App\Http\Livewire\Consultation\Show::class)->name('consultations.invoice');
 });
 
 Route::get('/administrator/home', App\Http\Livewire\AdminDashboard::class)->middleware('role:superadmin|administrator');
