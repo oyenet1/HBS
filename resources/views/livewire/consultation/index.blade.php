@@ -21,7 +21,7 @@
 
     {{-- tables --}}
     <div class="w-full px-4 pb-4 overflow-x-auto bg-white rounded-lg shadow-sm">
-        @if (\App\Models\Consultation::count() > 1)
+        @if (\App\Models\Consultation::count() > 0)
         <table class="w-full space-y-2 overflow-x-auto whitespace-nowrap">
             <thead class="w-full pb-4 text-xl border-b">
                 <tr class="font-medium">
